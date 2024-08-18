@@ -55,7 +55,7 @@ app.get("/commands", async(req, res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.get(`${servers[server]}/commands`);
+  const server_ = await axios.get(`${servers[parseInt(server) - 1]}/commands`);
   if (!server_) return res.json({
     error: `An error occured on: Server ${server || "0"}`
   });
@@ -82,7 +82,7 @@ app.get("/nethTools", async(req,res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.get(`${servers[server]}/nethTools`, {
+  const server_ = await axios.get(`${servers[parseInt(server) - 1]}/nethTools`, {
     params: {
       type,pass
     }
@@ -109,7 +109,7 @@ app.post("/BotifyWiegine", async (req, res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.post(`${servers[server]}/BotifyWiegine`, {
+  const server_ = await axios.post(`${servers[parseInt(server) - 1]}/BotifyWiegine`, {
       appstate,pass
     });
   if (!server_) return res.json({
@@ -137,7 +137,7 @@ app.post("/login", async(req, res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.post(`${servers[server]}/login`, {
+  const server_ = await axios.post(`${servers[parseInt(server) - 1]}/login`, {
        state, commands, prefix, admin,
        botname,
        autos,

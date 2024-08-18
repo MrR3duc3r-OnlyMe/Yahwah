@@ -1,5 +1,5 @@
 const select = document.getElementById("servers");
-const selectt1 = parseInt(localStorage.getItem(select.id)) - 1;
+const selectt1 = localStorage.getItem(select.id);
 async function add(num, desc){
   num = num.toString();
   const server = document.createElement('option');
@@ -13,4 +13,4 @@ const tangina = async (t) => {
 };
 add(1, "Render");
 
-select.value = selectt1 < 0 ? "1" : selectt1;
+select.value = !selectt1 ? "1" : selectt1;
