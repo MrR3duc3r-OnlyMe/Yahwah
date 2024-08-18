@@ -38,16 +38,19 @@ routes.forEach(route => {
 app.get("/active_user", async(req, res) => {
   let actives = [];
   for (const server of servers){
-  const axios1 = await axios.get(server + "/active_user").catch(err => null);
-  if (axios1.data) actives.push(axios1.data);
+  const response = await axios.get(server + "/active_user").catch(err => null);
+  if (Array.isArray(response.data) && response.data.length > 0) {
+    actives = actives.concat(response.data);
   }
-  return res.json(actives);
+  }
+  return res.json(actives.length > 0 ? actives : []);
 });
 
 app.get("/commands", async(req, res) => {
   const {
     server
   } = req.query;
+  server = parseInt(server);
   if (!server) {
     return res.json({
       error: "No server parameter."
