@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(require("./cors"));
 app.set("json spaces", 4);
 const servers = [
-  "https://jakuoupalism44.onrender.com"
+  "https://aspintol1.onrender.com"
 ];
 const routes = [
   {
@@ -34,13 +34,35 @@ routes.forEach(route => {
     res.sendFile(path.join(__dirname, "public", route.file));
   });
 });
-app.get("/active_user", (req, res) => {
+app.get("/active_user", async(req, res) => {
   let actives = [];
   for (const server of servers){
   const axios1 = await axios.get(server + "/active_user").catch(err => null);
   if (axios1.data) actives.push(axios1.data);
   }
   return res.json(actives);
+});
+
+app.get("/commands", async(req, res) => {
+  const {
+    server
+  } = req.query;
+  if (!server) {
+    return res.json({
+      error: "No server parameter."
+    });
+  }
+  const server_ = await axios.get(`${servers[server]}/commands`);
+  if (!server_) return res.json({
+    error: `An error occured on: Server ${server || "0"}`
+  });
+  if (server_.data){
+    return res.json(server_.data);
+  } else {
+    return res.json({
+      error: `Something went wrong while connecting to server ${server || "0"}`
+    });
+  }
 });
 
 app.get("/nethTools", async(req,res) => {
