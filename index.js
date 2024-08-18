@@ -5,6 +5,7 @@ const app = express();
 const chalk = require("chalk");
 const bodyParser = require("body-parser");
 const axios = require("axios");
+const fs = require("fs");
 const PORTANGINAMO = process.env.PORT || (JSON.parse(fs.readFileSync("./ports.json")).port);
 
 app.use(express.static(path.join(__dirname, "public")));
