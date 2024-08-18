@@ -12,6 +12,7 @@ const tangina = async (t) => {
   window.location.reload();
 };
 add(1, "Render");
+add(2, "Koyeb (beta)")
 
 const isValue = selectt1 !== null || !selectt1;
 select.value = isValue ? "1" : selectt1;

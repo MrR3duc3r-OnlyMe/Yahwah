@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(require("./cors"));
 app.set("json spaces", 4);
 const servers = [
-  "https://aspintol1.onrender.com"
+  "https://aspintol1.onrender.com",
+  "https://autonomous-karrah-nethproject-a152bbb1.koyeb.app"
 ];
 const routes = [
   {
