@@ -13,4 +13,4 @@ const tangina = async (t) => {
 };
 add(1, "Render");
 
-select.value = !selectt1 ? "1" : selectt1;
+select.value = selectt1 !== null ? "1" : selectt1;
