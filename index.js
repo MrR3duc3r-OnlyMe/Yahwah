@@ -159,4 +159,3 @@ app.listen(PORTANGINAMO, () => {
 process.on("unhandledRejection", reason => {
   console.log(chalk.red(`Error: ${reason}`));
 });
-main();
