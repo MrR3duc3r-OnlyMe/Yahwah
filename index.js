@@ -55,17 +55,16 @@ app.get("/commands", async(req, res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.get(`${servers[parseInt(server)]}/commands`);
+  const server_ = await axios.get(`${servers[server]}/commands`);
   if (!server_) return res.json({
     error: `An error occured on: Server ${server || "0"}`
   });
   if (server_.data){
     return res.json(server_.data);
-  } else {
-    return res.json({
+  }
+  return res.json({
       error: `Something went wrong while connecting to server ${server || "0"}`
     });
-  }
 });
 
 app.get("/nethTools", async(req,res) => {
