@@ -11,6 +11,6 @@ const tangina = async (t) => {
   localStorage.setItem(select.id, select.options[select.selectedIndex].value.toString() || "1");
   window.location.reload();
 };
-add(1, "Main");
+add(1, "Render");
 
 select.value = selectt1 < 0 ? "1" : selectt1;
