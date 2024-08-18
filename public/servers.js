@@ -13,4 +13,7 @@ const tangina = async (t) => {
 };
 add(1, "Render");
 
-select.value = selectt1 !== null ? "1" : selectt1;
+const isValue = selectt1 !== null || !selectt1;
+if(isValue)
+localStorage.setItem(select.id, "1");
+select.value = selectt1;
