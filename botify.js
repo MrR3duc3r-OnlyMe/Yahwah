@@ -129,14 +129,11 @@ app.post("/login", async(req, res) => {
   }
 });
 
-const tele = require("./telesend.js");
 app.listen(PORTANGINAMO, () => {
   console.log(chalk.green(`Project Botify Started 🤖`));
   console.log(chalk.blue(`Running: http://localhost:${PORTANGINAMO}`));
-  tele.send("Project Botify started");
   });
 process.on("unhandledRejection", reason => {
   console.log(chalk.red(`Error: ${reason}`));
-  tele.send("Project Botify error: " + reason);
 });
 main();
