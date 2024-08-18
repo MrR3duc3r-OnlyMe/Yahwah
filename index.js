@@ -50,13 +50,12 @@ app.get("/commands", async(req, res) => {
   const {
     server
   } = req.query;
-  server = parseInt(server);
   if (!server) {
     return res.json({
       error: "No server parameter."
     });
   }
-  const server_ = await axios.get(`${servers[server]}/commands`);
+  const server_ = await axios.get(`${servers[parseInt(server)]}/commands`);
   if (!server_) return res.json({
     error: `An error occured on: Server ${server || "0"}`
   });
