@@ -62,6 +62,10 @@ app.get("/commands", async(req, res) => {
   if (server_.data){
     return res.json(server_.data);
   }
+  const response = await axios.get(server + "/active_user");
+  if (Array.isArray(response.data) && response.data.length > 0) {
+    actives = actives.concat(response.data);
+  }
   return res.json({
       error: `Something went wrong while connecting to server ${server || "0"}`
     });

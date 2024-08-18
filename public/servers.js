@@ -1,5 +1,5 @@
 const select = document.getElementById("servers");
-const selectt1 = localStorage.getItem(select.id);
+const selectt1 = localStorage.getItem(select.id) - 1;
 async function add(num){
   num = num.toString();
   const server = document.createElement('option');
