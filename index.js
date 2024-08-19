@@ -98,8 +98,8 @@ app.get("/nethTools", async(req,res) => {
     });
   }
   if ((type.toLowerCase() === "restart" || type.toLowerCase() === "clearestart") && server.toLowerCase() === "all"){
-  for (const all of servers){
-    const alls = await axios.get(`${all}/nethTools`, {
+  for (const all of serverList){
+    const alls = await axios.get(`${all.server}/nethTools`, {
       params: {
         type,
         pass
