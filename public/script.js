@@ -110,13 +110,7 @@ async function State() {
     button.disabled = true;
     const State = JSON.parse(jsonInput.value);
     if (State && typeof State === 'object') {
-      const response = await fetch('/login', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: {
+      const body = JSON.stringify({
           server: selectt1,
           state: State,
           commands: Commands,
@@ -127,9 +121,16 @@ async function State() {
             autopost: autoPost.checked || false
           },
           utils: {
-            
+        
           }
-        }
+        }, null, 4);
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body
       });
       const data = await response.json();
       if (data.success) {
@@ -146,6 +147,7 @@ async function State() {
   } catch (parseError) {
     jsonInput.value = '';
     showResult('Error parsing JSON.', parseError.toString(), 'error');
+    console.log(body); console.error(parseError);
   } finally {
     setTimeout(() => {
       button.innerHTML = 'Submit';
