@@ -37,6 +37,7 @@ const bulaga = await loadServers();
 if (bulaga) select.value = selectt1;
 else (() => {
   select.style.display = "none";
+  serverlength.style.display = "none";
   serverlength.innerHTML = "Servers: No servers available";
 })();
 }
