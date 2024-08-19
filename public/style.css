@@ -155,7 +155,7 @@ h1 {
    border-radius: 2em;
    background: var(--main-bg) padding-box,var(--gradient-border) border-box,var(--main-bg) border-box;
    background-position: center center;
-   transition: outline-width 300ms ease, outline-offset 300ms ease;
+   transition: outline-width 300ms ease-in-out, outline-offset 300ms ease-in-out;
    animation: bg-spin 10s linear infinite;
    }
  .bgn-isa:hover,

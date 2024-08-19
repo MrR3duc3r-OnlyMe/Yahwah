@@ -7,16 +7,14 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 const fs = require("fs");
 const PORTANGINAMO = process.env.PORT || 3000;
+const serverList = require("./server.js");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./cors"));
 app.set("json spaces", 4);
-const servers = [
-  "https://aspintol1.onrender.com",
-  "https://autonomous-karrah-nethproject-a152bbb1.koyeb.app"
-];
+const servers = (num) => serverList[num].server;
 const routes = [
   {
     path: "/",
@@ -36,6 +34,18 @@ routes.forEach(route => {
     res.sendFile(path.join(__dirname, "public", route.file));
   });
 });
+app.get("/servers", async(req, res) => {
+  const serverLists = [];
+  for (const serv of serverList){
+    const {
+      name, description
+    } = serv;
+    serverLists.push({
+      name, description
+    });
+  }
+  return res.json(serverLists.length > 0 ? serverLists : []);
+})
 app.get("/active_user", async(req, res) => {
   let actives = [];
   for (const server of servers){

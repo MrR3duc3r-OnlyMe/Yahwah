@@ -153,11 +153,25 @@ async function State() {
     }, 1 * 1000);
   }
 }
-
+const footertxt = document.getElementById('pogiako');
+function measurePing() {
+  let xhr = new XMLHttpRequest();
+  let startTime, endTime;
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      endTime = Date.now();
+      let pingTime = endTime - startTime;
+      footertxt.innerHTML = `🕑 ${new Date().toLocaleString()} | Ping: ${pingTime}ms`;
+    }
+  };
+  xhr.open("GET", location.href + "?t=" + new Date().getTime());
+  startTime = Date.now();
+  xhr.send();
+}
 async function commandList() {
   try {
-    const footertxt = document.getElementById('pogiako');
-    footertxt.innerHTML = "© 2024 Project Botify — by Kenneth Aceberos";
+    //footertxt.innerHTML = "© 2024 Project Botify";
+    setInterval(measurePing, 1000);
     document.getElementById("test1").innerHTML = `Create your own bot!<br>(100% FREE and <font color="red">NOT FOR SALE</font>)`;
     let file = "NethBgmusic";
     let getm = localStorage.getItem(file);
