@@ -18,7 +18,7 @@ async function loadServers(){
   }
   const data = await server.json();
   data.forEach(async (server, num) => {
-    add(String(num), server.name);
+    add(String(num + 1), server.name);
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
   return data;

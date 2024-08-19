@@ -160,14 +160,14 @@ function measurePing() {
       footertxt.innerHTML = `🕑 ${new Date().toLocaleString()} | Ping: ${pingTime}ms`;
     }
   };
-  xhr.open("GET", location.href + "?t=" + new Date().getTime());
+  xhr.open("GET", "https://" + "?t=" + new Date().getTime());
   startTime = Date.now();
   xhr.send();
 }
 async function commandList() {
   try {
     //footertxt.innerHTML = "© 2024 Project Botify";
-    setInterval(measurePing, 1000);
+    setInterval(() => footertxt.innerHTML = `🕑 ${new Date().toLocaleString()}`, 1000);
     document.getElementById("test1").innerHTML = `Create your own bot!<br>(100% FREE and <font color="red">NOT FOR SALE</font>)`;
     let file = "NethBgmusic";
     let getm = localStorage.getItem(file);
