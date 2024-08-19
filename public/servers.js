@@ -1,4 +1,4 @@
-const select = document.getElementById("servers");
+const select = document.getElementById("servers") || "1";
 const selectt1 = localStorage.getItem(select.id);
 async function add(num, desc){
   num = num.toString();
@@ -14,4 +14,4 @@ const tangina = async (t) => {
 add(1, "Render");
 add(2, "Koyeb (beta)");
 
-select.value = selectt1 || "1";
+select.value = selectt1;

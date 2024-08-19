@@ -126,11 +126,14 @@ app.post("/BotifyWiegine", async (req, res) => {
 });
 
 app.post("/login", async(req, res) => {
- const { state, commands, prefix, admin, botname,
-    autos = {
-    autopost: false
-   },
-   utils = {},
+ const {
+   state,
+   commands,
+   prefix,
+   admin,
+   botname,
+   autos,
+   utils,
    server
  } = req.body;
  if (!server){
