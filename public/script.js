@@ -104,6 +104,7 @@ async function State() {
   if (adminUid.value.length < 1) {
     return showResult('', 'Valid Admin User ID is needed.', 'error');
   }
+  const State = JSON.parse(jsonInput.value);
   const body = JSON.stringify({
          server: selectt1,
           state: State,
@@ -122,7 +123,6 @@ async function State() {
     button.innerHTML = 'Please wait...';
     button.className = 'bgn-isa';
     button.disabled = true;
-    const State = JSON.parse(jsonInput.value);
     if (State && typeof State === 'object') {
       const response = await fetch('/login', {
         method: 'POST',
