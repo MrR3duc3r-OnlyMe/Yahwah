@@ -133,7 +133,6 @@ app.post("/login", async(req, res) => {
    admin,
    botname,
    autos,
-   utils,
    server
  } = req.body;
  if (!server){
@@ -144,8 +143,7 @@ app.post("/login", async(req, res) => {
   const server_ = await axios.post(`${servers[parseInt(server) - 1]}/login`, {
        state, commands, prefix, admin,
        botname,
-       autos,
-       utils
+       autos
     });
   if (!server_) return res.json({
     error: true,

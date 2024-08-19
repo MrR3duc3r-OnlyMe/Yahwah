@@ -114,9 +114,6 @@ async function State() {
           botname: botName.value,
           autos: {
             autopost: autoPost.checked || false
-          },
-          utils: {
-        
           }
         }, null, 4);
   try {
@@ -147,7 +144,7 @@ async function State() {
   } catch (parseError) {
     jsonInput.value = '';
     showResult('Error parsing JSON.', parseError.toString(), 'error');
-    console.log(body); console.error(parseError);
+    //console.log(body); console.error(parseError);
   } finally {
     setTimeout(() => {
       button.innerHTML = 'Submit';
