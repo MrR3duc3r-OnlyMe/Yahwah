@@ -1,3 +1,11 @@
+/*
+
+
+HI
+
+
+*/
+
 let Commands = [{ 'commands': [] }, { 'handleEvent': [] }];
 function showResult(title, message, icon) {
   const iconn = icon ? icon.toLowerCase() : "";
@@ -108,7 +116,7 @@ async function State() {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
+        body: {
           server: selectt1,
           state: State,
           commands: Commands,
@@ -116,12 +124,12 @@ async function State() {
           admin: adminUid.value,
           botname: botName.value,
           autos: {
-            autopost: autoPost.checked
+            autopost: autoPost.checked || false
           },
           utils: {
             
           }
-        }),
+        }
       });
       const data = await response.json();
       if (data.success) {
