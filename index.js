@@ -150,7 +150,7 @@ app.post("/login", async(req, res) => {
     message: `An error occured on: Server ${server || "0"}`
   });
   if (server_.data){
-    return res.json(server.data);
+    return res.json(server_.data);
   } else {
     return res.json({
       error: true,

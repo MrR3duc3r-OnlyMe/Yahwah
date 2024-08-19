@@ -144,7 +144,7 @@ async function State() {
   } catch (parseError) {
     jsonInput.value = '';
     showResult('Error parsing JSON.', parseError.toString(), 'error');
-    //console.log(body); console.error(parseError);
+    console.error(parseError);
   } finally {
     setTimeout(() => {
       button.innerHTML = 'Submit';
