@@ -17,13 +17,13 @@ async function loadServers(){
     throw new Error();
   }
   const data = await server.json();
-  data.forEach(async (server, num) => {
-    add(String(num + 1), server.name);
+  data.forEach(async (server1, num) => {
+    add(String(num + 1), server1.name);
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
   return data;
-  } catch {
-    alert("There was a problem loading the servers. Please try again later.");
+  } catch(error) {
+    alert("There was a problem loading the servers. Please try again later.\n\n" + error.toString());
     return;
   }
 }

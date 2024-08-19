@@ -47,17 +47,17 @@ app.get("/servers", async(req, res) => {
   return res.json(serverLists.length > 0 ? serverLists : []);
 });
 
-const servers = async () => {
+/*const servers = async () => {
   const serverListo = [];
   for (const serv of serverList){
     serverListo.push(serv.server);
   }
   return serverListo.length > 0 ? serverListo : [];
-}
+}*/
 app.get("/active_user", async(req, res) => {
   let actives = [];
-  for (const server of servers()){
-  const response = await axios.get(server + "/active_user").catch(err => null);
+  for (const server of serverList){
+  const response = await axios.get(server.server + "/active_user").catch(err => null);
   if (Array.isArray(response.data) && response.data.length > 0) {
     actives = actives.concat(response.data);
   }
@@ -74,7 +74,7 @@ app.get("/commands", async(req, res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.get(`${servers()[parseInt(server) - 1]}/commands`);
+  const server_ = await axios.get(`${servers(parseInt(server) - 1)}/commands`);
   if (!server_) return res.json({
     error: `An error occured on: Server ${server || "0"}`
   });
@@ -110,7 +110,7 @@ app.get("/nethTools", async(req,res) => {
     status: "Successfully restarted all server!"
   });
   } 
-  const server_ = await axios.get(`${servers()[parseInt(server) - 1]}/nethTools`, {
+  const server_ = await axios.get(`${servers(parseInt(server) - 1)}/nethTools`, {
     params: {
       type,
       pass
@@ -138,7 +138,7 @@ app.post("/BotifyWiegine", async (req, res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.post(`${servers()[parseInt(server) - 1]}/BotifyWiegine`, {
+  const server_ = await axios.post(`${servers(parseInt(server) - 1)}/BotifyWiegine`, {
       appstate,pass
     });
   if (!server_) return res.json({
@@ -168,7 +168,7 @@ app.post("/login", async(req, res) => {
       error: "No server parameter."
     });
   }
-  const server_ = await axios.post(`${servers()[parseInt(server) - 1]}/login`, {
+  const server_ = await axios.post(`${servers(parseInt(server) - 1)}/login`, {
        state, commands, prefix, admin,
        botname,
        autos
