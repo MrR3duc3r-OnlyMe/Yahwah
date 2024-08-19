@@ -107,7 +107,10 @@ async function State() {
           commands: Commands,
           prefix: prefix.value == "" ? "/" : prefix.value,
           admin: adminUid.value,
-          botname: botName.value
+          botname: botName.value,
+          autos: {
+            autopost: true
+          }
         }),
       });
       const data = await response.json();
