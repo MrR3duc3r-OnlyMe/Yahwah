@@ -1,9 +1,5 @@
 /*
-
-
-HI
-
-
+HI SA DDOSER NA WALANG AMBAG 
 */
 
 let Commands = [{ 'commands': [] }, { 'handleEvent': [] }];
