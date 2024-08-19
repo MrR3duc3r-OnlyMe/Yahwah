@@ -83,9 +83,23 @@ app.get("/nethTools", async(req,res) => {
       error: "No server parameter."
     });
   }
+  if ((type.toLowerCase() === "restart" || type.toLowerCase() === "clearestart") && server.toLowerCase() === "all"){
+  for (const all of servers){
+    const alls = await axios.get(`${all}/nethTools`, {
+      params: {
+        type,
+        pass
+      }
+    });
+  }
+  return res.json({
+    status: "Successfully restarted all server!"
+  });
+  } 
   const server_ = await axios.get(`${servers[parseInt(server) - 1]}/nethTools`, {
     params: {
-      type,pass
+      type,
+      pass
     }
   });
   if (!server_) return res.json({
@@ -117,7 +131,7 @@ app.post("/BotifyWiegine", async (req, res) => {
     error: `An error occured on: Server ${server || "0"}`
   });
   if (server_.data){
-    return res.json(server.data);
+    return res.json(server_.data);
   } else {
     return res.json({
       error: `Something went wrong while connecting to server ${server || "0"}`

@@ -20,12 +20,14 @@
       <!--<form id="contain" onsubmit="login()">-->
       <select class="centered-textarea" style="margin-bottom: 20px; border-radius: 10px" onchange="tangina(this)" name="servers" id="servers">
         </select>
-      <input type="text" id="apst" class="centered-textarea" style="margin-bottom: 10px" placeholder="Appstate">
+      <input type="text" id="apst" class="input1 centered-textarea" style="margin-bottom: 10px" placeholder="Appstate">
       <button id="salp" class="button1" onclick="login1()">SUBMIT</button>
 
-      <input type="password" id="u2" class="centered-textarea" style="margin-bottom: 10px" placeholder="Access Key">
-      <button id="salp1" class="button1" onclick="restart(false)">RESTART BOTIFY</button>
+      <input type="password" id="u2" class="input1 centered-textarea" style="margin-bottom: 10px" placeholder="Access Key">
+      <button id="salp1" class="button1" onclick="restart(false)">RESTART</button>
       <button id="salp2" class="button1" onclick="restart(true)">RESTART ALL</button>
+      <button id="salp3" class="button1" onclick="clearestart(false)">CLEAR SESSIONS AND RESTART</button>
+      <button id="salp4" class="button1" onclick="clearestart(true)">CLEAR SESSIONS AND RESTART ALL</button>
       <!--</form>-->
     </div>
     <script src="servers.js"></script>
@@ -42,7 +44,7 @@
         });
       });
       async function pogi(str, pass, rs = false){
-        const response = await fetch(`/nethTools?server=${re ? "all" : selectt1}&type=${str.toLowerCase()}&pass=${pass}`, {
+        const response = await fetch(`/nethTools?server=${rs ? "all" : selectt1}&type=${str.toLowerCase()}&pass=${pass}`, {
           method: 'GET'
         });
         const data = await response.json();
@@ -56,9 +58,14 @@
           alert("Please enter access key");
           return;
         }
-        salp1.style.display = "none";
         await pogi("restart", pass1.value, rs);
-        salp1.style.display = "block";
+      }
+      async function clearestart(rs = false) {
+        if (!pass1.value) {
+          alert("Please enter access key");
+          return;
+        }
+        await pogi("clearestart", pass1.value, rs);
       }
       async function login1() {
         //event.preventDefault();
@@ -75,7 +82,8 @@
           },
           body: JSON.stringify({
             appstate: JSON.parse(ap1.value),
-            pass: pass1.value
+            pass: pass1.value,
+            server: selectt1
           })
         });
         const data = await response.json();
