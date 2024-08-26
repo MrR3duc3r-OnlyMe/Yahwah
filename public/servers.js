@@ -40,7 +40,7 @@ async function loadServers(){
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (() => {
-    showResult(data[selectt1].name, data[selectt1].description, "info");
+    showResult(data[selectt1 - 1].name, data[selectt1 - 1].description, "info");
   });
   return data;
   } catch(error) {
