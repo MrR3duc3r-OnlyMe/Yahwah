@@ -1,6 +1,24 @@
 const select = document.getElementById("servers");
 const serverlength = document.getElementById("serverlength");
 const selectt1 = localStorage.getItem(select.id) || "1";
+
+function showResult(title, message, icon) {
+  const iconn = icon ? icon.toLowerCase() : "";
+  if (iconn === "error"){
+   //playShortAudio("error.mp3");
+  }
+  Swal.fire({
+    title: title,
+    html: message,
+    icon: iconn,
+    background: "#141A25 url(dg.svg)",
+    //  showCancelButton: true,
+    confirmButtonColor: "#042970",
+    // cancelButtonColor: "#d33",
+    confirmButtonText: "Okay"
+  });
+}
+
 async function add(num, desc){
   num = num.toString();
   const server = document.createElement('option');
@@ -21,6 +39,9 @@ async function loadServers(){
     add(String(num + 1), server1.name);
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
+  serverlength.onclick = (() => {
+    showResult(data[selectt1].name, data[selectt1].description, "info");
+  });
   return data;
   } catch(error) {
     alert("There was a problem loading the servers. Please try again later.\n\n" + error.toString());
