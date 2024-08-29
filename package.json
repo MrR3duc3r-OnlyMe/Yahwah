@@ -20,7 +20,8 @@
     "fs": "^0.0.1-security",
     "node-cron": "^3.0.3",
     "node-fetch": "^3.2.6",
-    "os": "^0.1.2"
+    "os": "^0.1.2",
+    "express-rate-limit": "^7.4.0"
   },
   "devDependencies": {
     "eslint": "^7.5.0",
