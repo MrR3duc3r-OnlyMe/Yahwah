@@ -13,5 +13,10 @@ module.exports = [
     server: "https://wieginedev.onrender.com",
     name: "Render",
     description: "New server. same as Main."
+  },
+  {
+    server: "http://fred.hidencloud.com:26076",
+    name: "Hidencloud",
+    description: "New server."
   }
 ];
