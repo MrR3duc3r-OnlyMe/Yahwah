@@ -158,7 +158,7 @@ async function commandList() {
     const pogika = document.getElementById("pogika");
 
     function switchie1(b) {
-      playMusic(`music.mp3`, b, true);
+      playMusic(`https://i.imgur.com/ultFHnh.mp4`, b, true);
       pogika.innerHTML = (b ? "🎧 " : "") + "Project Botify";
     }
     pogika.addEventListener('click', () => {
