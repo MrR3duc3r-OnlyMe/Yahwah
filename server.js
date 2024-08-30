@@ -22,6 +22,6 @@ module.exports = [
   {
     server: "http://ap.sg.1.xeh.sh:25098",
     name: "XEH",
-    description: "New and fast server. 2GB RAM | 100% CPU"
+    description: "New and fast server. 2GB RAM | 200% CPU"
   }
 ];
