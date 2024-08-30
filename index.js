@@ -109,12 +109,16 @@ app.get("/nethTools", async(req,res) => {
   }
   if ((type.toLowerCase() === "restart" || type.toLowerCase() === "clearestart") && server.toLowerCase() === "all"){
   for (const all of serverList){
+    try {
     const alls = await axios.get(`${all.server}/nethTools`, {
       params: {
         type,
         pass
       }
     });
+    } catch (error){
+      return;
+    }
   }
   return res.json({
     status: "Successfully restarted all server!"
