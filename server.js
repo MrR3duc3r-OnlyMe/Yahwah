@@ -23,5 +23,10 @@ module.exports = [
     server: "http://ap.sg.1.xeh.sh:25098",
     name: "XEH",
     description: "New and fast server. 2GB RAM | 200% CPU"
+  },
+  {
+    server: "https://botidebug.onrender.com",
+    name: "DebugServer",
+    description: "Can access experimental features, beta testing, Use at your own risk, you might suspend your account due to multiple restart on testing"
   }
 ];
