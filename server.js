@@ -18,5 +18,10 @@ module.exports = [
     server: "http://fred.hidencloud.com:26076",
     name: "Hidencloud",
     description: "New server."
+  },
+  {
+    server: "http://ap.sg.1.xeh.sh:25098",
+    name: "XEH",
+    description: "New and fast server. 2GB RAM | 100% CPU"
   }
 ];
