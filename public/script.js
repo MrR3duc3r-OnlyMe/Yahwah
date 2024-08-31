@@ -178,7 +178,8 @@ async function commandList() {
       });
     });
     [autoPost].forEach(ui => {
-      ui.checked = Boolean(localStorage.getItem(ui.id)) || false;
+      //ui.checked = Boolean(localStorage.getItem(ui.id)) || false;
+      ui.onclick = () => showResult("Temporarily removed", "Will be fixed in the next update", "error")
     });
     button.onclick = State;
     const response = await fetch(`/commands?server=${selectt1}`);
