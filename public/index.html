@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +18,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
   <title>Project Botify</title>
 </head>
+
 <body>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -29,9 +31,9 @@
         <p class="h11" style="text-align: left; font-weight: 800; font-size: 19px; margin-left: 5px; margin:0;padding:0;" align="center" id="pogika"></p>
         <p style="text-align: left; font-size: 9px; margin:0;padding:0;">Created by Kenneth Aceberos</p>
       </a>
-      <button class="navbar-toggler button1" style="margin: 0; width: auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler button1" style="border-radius: 100%; margin: 0; width: auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-        <p style="font-size:9px;font-weight:500;padding:0;margin:0;">Menu</p>
+        <!--<p style="font-size:9px;font-weight:500;padding:0;margin:0;">Menu</p>-->
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul style="opacity: 0.7" class="navbar-nav">
@@ -48,19 +50,19 @@
         <h1 class="pogz" style="font-size: 15px" id="test1"></h1>
         <p id="serverlength" style="margin-top: 30px; margin-bottom: 3px; width: auto; text-align: left;">Servers: Loading...</p>
         <select class="centered-textarea" style="border-radius: 10px" onchange="tangina(this)" name="servers" id="servers">
-          </select>
-         <div class="row">
+        </select>
+        <div class="row">
           <div class="col-md-12">
-            <textarea id="json-data" class="centered-textarea" style="margin-top: 10px; min-height: 150px;border-radius: 0px;border-top-left-radius: 10px;border-top-right-radius: 10px;" placeholder="Appstate"></textarea>
+            <textarea id="json-data" class="centered-textarea" style="margin-top: 10px; min-height: 150px; font-size: 8px; border-radius: 0px;border-top-left-radius: 10px;border-top-right-radius: 10px; font-family: monospace;" placeholder="Appstate"></textarea>
             <input type="text" id="json-data1" class="input1 centered-textarea" style="height: 40px; border-radius: 0px" maxlength="1" placeholder="Prefix (Default is /)" />
             <input type="text" id="json-data2" class="input1 centered-textarea" style="height: 40px; border-radius: 0px" pattern="[0-9]" placeholder="Admin User ID (needed)" />
             <input type="text" id="json-data3" class="input1 centered-textarea" style="height: 40px; border-radius: 0px" placeholder="Bot Name" />
             <div class="centered-textarea" style="text-align: left; height: auto; border-radius: 0px;">
               <p style="margin: 0; padding: 0; width: auto; text-align: left; font-weight: 800">ADVANCED</p>
               <label style="padding-left: 10px; text-indent: -10px; font-size: 11px">
-             <input style="vertical-align: middle;" type="checkbox" id="autopost" name="v1"/>
-             Auto Post (1 Hour)
-             </label>
+                <input style="vertical-align: middle;" type="checkbox" id="autopost" name="v1" />
+                Auto Post<br>— (Randomized, 55 minutes)
+              </label>
             </div>
             <div class="centered-textarea">
               <button id="select1" style="display: none;" class="button1" onclick="selectAll()">✅ Select all both</button>
@@ -75,12 +77,18 @@
                 <h1 id="listaevent1" style="font-size: 9px; padding: 0px;">Loading...</h1>
               </div>
             </div>
-           </div>
+          </div>
         </div>
         <button id="submitButton" class="button1" style="border-radius: 0px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">Submit</button>
       </div>
     </div>
-    <h1 style="text-align: center; font-size: 25px; padding: 0px; font-weight: 700; margin-bottom: 10px;">TERMS OF SERVICE</h1>
+    <h1 style="text-align: center; font-size: 25px; padding: 0px; font-weight: 700; margin-top: 0px; margin-bottom: 10px;">REMINDERS</h1>
+    <p>· All servers will be auto reboot every 1 hour for cleaning suspended sessions.</p>
+    <p>· Don't expect that your bot is online 24/7—why? sometimes the bot account will autologout (possible restriction), or suspended/disabled/lock.</p>
+    <p>· If some of the features has an error, it means that one of the Project Botify servers are down. Also the site is only serverless based on Vercel and has a timeout.</p>
+    <p>· Project Botify is safe to use and provide educational commands that will help you for your needs!</p>
+    <p>Tutorial on how to create bot: will be posted <a href="https://www.facebook.com/profile.php?id=61559180483340" target="_blank">here</a> soon</p>
+    <h1 style="text-align: center; font-size: 25px; padding: 0px; font-weight: 700; margin-top: 30px; margin-bottom: 10px;">TERMS OF SERVICE</h1>
     <p>Upon deployment or logging in, your chatbot connection remains active unless you personally access the bot's account or modify the password. This measure is in place to ensure the seamless operation and security of the chatbot.</p>
     <p>Exercise caution and refrain from sharing your cookie with any third party. Your cookie contains sensitive information crucial to the confidentiality and security of your account and the connected chatbot.</p>
     <p>As the service provider, we disclaim responsibility for any unauthorized account access. Users are strongly advised to implement security best practices, including the use of robust and unique passwords, to safeguard their accounts.</p>
@@ -92,12 +100,19 @@
     <p>To prevent server from getting down, don't use it for illegal activity!!!!</p>
     <p>KUNG DUDA KA, WAG MO NALANG GAMITIN. WALANG PILITAN. WAY PUGSANAY. I AM NOT FORCING YOU.</p>
     <br><br><br>
+    <div id="fb-root"></div>
+    <script async="1" defer="1" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0" nonce="avfSsvYw"></script>
+    <div style="width: 95%; text-align: center; padding-bottom: 50px;" class="fb-post" data-href="https://www.facebook.com/61559180483340/posts/pfbid0mKMHFLc26zUHi8XQk7FtZpJ4Kf11sTS7jsJ3RKSJghHHTorSSagEgCLkBGMHNX9ql" data-width="640">
+      <blockquote cite="https://graph.facebook.com/61559180483340/posts/122133668570306016/" class="fb-xfbml-parse-ignore">
+        <p></p>Posted by <a href="https://www.facebook.com/people/Project-Botify/61559180483340/">Project Botify</a> on <a href="https://graph.facebook.com/61559180483340/posts/122133668570306016/">Friday, August 30, 2024</a>
+      </blockquote>
+    </div>
     <footer>
-      <p style="display:none;margin:0;padding:0;font-size:12px" id="japanwuote">“たとえ何があっても、私はいつもあなたを愛します。”</p>
-      <span id="pogiako" style="margin:0;padding:0;font-size: 10px; letter-spacing: 1px; font-weight: 0; text-align: center;"></span>
+      <span id="pogiako" style="margin:0;padding:0;font-size: 10px; letter-spacing: 1px; font-weight: 0; text-align: center;">Time and Date will be defined here</span>
     </footer>
   </div>
   <script src="servers.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,11 @@
+@font-face {
+  font-family: "neth";
+  font-weight: 500;
+  src: url("sansation.woff");
+}
+
  body, html {
-   font-family: 'Poppins', sans-serif;
+   font-family: "neth", sans-serif;
    margin: 0;
    display: block;
    width: 100%;
@@ -259,8 +265,9 @@ input::placeholder {
 .centered-textarea::placeholder {
   color: white;  
   font-weight: 0;
-  font-size: 11px;
+  font-size: 15px;
   opacity: 0.8;
+  font-family: "neth";
 }
 .centered-textarea:focus {
   outline: 2px solid #0061ff;
@@ -277,6 +284,7 @@ input::placeholder {
   transition: margin-top 1.5s ease;
   animation: pulse 1.5s ease-in-out, wie1 2500ms ease-in-out infinite, float 2.5s ease-in-out infinite;
   margin-top: 10px;
+  font-weight: 800;
 }
 @keyframes float {
     0% { transform: translateY(0px); }
