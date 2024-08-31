@@ -19,11 +19,11 @@ module.exports = [
     name: "Hidencloud",
     description: "New server."
   },
-  {
+  /*{
     server: "http://ap.sg.1.xeh.sh:25098",
     name: "XEH",
     description: "New and fast server. 2GB RAM | 200% CPU"
-  },
+  },*/
   {
     server: "https://botidebug.onrender.com",
     name: "DebugServer",
