@@ -1,7 +1,7 @@
 const crypto = require('crypto');
-const encryptionKey = `Mamataykasana`;
+const encryptionKey = crypto.randomBytes(32);
 function encryptData(plaintext) {
-  const iv = crypto.randomBytes(16); // Generate a new Initialization Vector (IV) for each encryption
+  const iv = crypto.randomBytes(16);
   const cipher = crypto.createCipheriv('aes-256-cbc', encryptionKey, iv);
   let encrypted = cipher.update(plaintext, 'utf8', 'hex');
   encrypted += cipher.final('hex');
