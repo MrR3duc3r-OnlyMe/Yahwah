@@ -55,9 +55,7 @@ app.post("/decrypt", async(req, res) => {
   if (!code) return res.json({
     error: "Failed to decrypt"
   });
-  return res.json({
-    hahaha: JSON.parse(JSON.stringify(decryptData(code), null, 4))
-  });
+  return res.json(JSON.stringify(decryptData(code), null, 4));
 });
 
 app.get("/servers", async(req, res) => {
