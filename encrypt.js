@@ -1,20 +1,15 @@
-const crypto = require('crypto');
-const encryptionKey = crypto.randomBytes(32);
-function encryptData(plaintext) {
-  const iv = crypto.randomBytes(16);
-  const cipher = crypto.createCipheriv('aes-256-cbc', encryptionKey, iv);
-  let encrypted = cipher.update(plaintext, 'utf8', 'hex');
-  encrypted += cipher.final('hex');
-  return `${iv.toString('hex')}:${encrypted}`;
-}
-function decryptData(ciphertext) {
-  const [ivHex, encrypted] = ciphertext.split(':');
-  const iv = Buffer.from(ivHex, 'hex');
-  const decipher = crypto.createDecipheriv('aes-256-cbc', encryptionKey, iv);
-  let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-  decrypted += decipher.final('utf8');
-  return decrypted;
-}
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('TangInaMoMamataykaSana',
+{
+  encoding: 'base64',
+  pbkdf2Iterations: 10000,
+  saltLength: 64
+});
 module.exports = {
-  encryptData, decryptData
+  encryptData(string) {
+    return cryptr.encrypt(string);
+  },
+  decryptData(string) {
+    return cryptr.decrypt(string);
+  }
 }
