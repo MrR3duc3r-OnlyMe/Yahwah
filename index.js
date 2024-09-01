@@ -12,22 +12,11 @@ const {
   encryptData,
   decryptData
 } = require("./encrypt.js");
-const {
-  rateLimit
-} = require("express-rate-limit");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./cors"));
 app.set("json spaces", 4);
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 30,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-  message: `F*ck you ~very much~ for ddosing my site :)`
-});
-app.use(limiter);
 const servers = (num) => serverList[num].server;
 const routes = [
   {
