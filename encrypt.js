@@ -3,7 +3,7 @@ const cryptr = new Cryptr('TangInaMoMamataykaSana',
 {
   encoding: 'base64',
   pbkdf2Iterations: 10000,
-  saltLength: 64
+  saltLength: 10
 });
 module.exports = {
   encryptData(string) {
