@@ -1,10 +1,8 @@
-const Cryptr = require('cryptr');
-const cryptr = new Cryptr('yawa__ka');
 module.exports = {
   encryptData(string) {
-    return cryptr.encrypt(string);
+    return Buffer.from(string).toString("hex");
   },
   decryptData(string) {
-    return cryptr.decrypt(string);
+    return Buffer.from(string, "hex").toString("ascii");
   }
 }
