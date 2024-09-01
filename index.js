@@ -9,6 +9,10 @@ const fs = require("fs");
 const PORTANGINAMO = process.env.PORT || 3000;
 const serverList = require("./server.js");
 const {
+  encryptData,
+  decryptData
+} = require("./encrypt.js");
+const {
   rateLimit
 } = require("express-rate-limit");
 app.use(express.static(path.join(__dirname, "public")));
@@ -44,6 +48,18 @@ routes.forEach(route => {
     res.sendFile(path.join(__dirname, "public", route.file));
   });
 });
+app.post("/decrypt", async(req, res) => {
+  const {
+    code
+  } = req.body;
+  if (!code) return res.json({
+    error: "Failed to decrypt"
+  });
+  return res.json({
+    hahaha: decryptData(JSON.parse(code))
+  });
+});
+
 app.get("/servers", async(req, res) => {
   const serverLists = [];
   for (const serv of serverList){
@@ -55,6 +71,21 @@ app.get("/servers", async(req, res) => {
     });
   }
   return res.json(serverLists.length > 0 ? serverLists : []);
+});
+
+app.get("/servers1", async(req, res) => {
+  const serverLists = [];
+  for (const serv of serverList){
+    const {
+      name, description
+    } = serv;
+    serverLists.push({
+      name, description
+    });
+  }
+  return res.json({
+    hahaha: encryptData(JSON.stringify(serverLists.length > 0 ? serverLists : [], null, 4))
+  });
 });
 
 /*const servers = async () => {
