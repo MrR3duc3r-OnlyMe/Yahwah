@@ -1,10 +1,5 @@
 const Cryptr = require('cryptr');
-const cryptr = new Cryptr('TangInaMoMamataykaSana',
-{
-  encoding: 'base64',
-  pbkdf2Iterations: 10000,
-  saltLength: 10
-});
+const cryptr = new Cryptr('yawa__ka');
 module.exports = {
   encryptData(string) {
     return cryptr.encrypt(string);
