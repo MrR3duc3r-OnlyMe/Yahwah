@@ -44,7 +44,7 @@ app.get("/decrypt", async(req, res) => {
   if (!decrypt) return res.json({
     error: "Failed to decrypt"
   });
-  return res.send(decryptData(code));
+  return res.send(decryptData(decrypt));
 });
 
 app.get("/servers", async(req, res) => {
