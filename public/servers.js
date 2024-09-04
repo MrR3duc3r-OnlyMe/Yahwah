@@ -41,9 +41,9 @@ async function loadServers(){
       "Accept": "application/json",
       "Content-Type": "application/json"
     },
-    body: {
+    body: JSON.stringify({
      code: serverjson.hahaha
-    }
+    })
   });
   const data = await decryptedserver.json();
   data.forEach(async (server1, num) => {
