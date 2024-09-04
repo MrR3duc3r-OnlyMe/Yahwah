@@ -45,8 +45,7 @@ async function loadServers(){
      code: serverjson.hahaha
     })
   });
-  const data = await decryptedserver.json();
-  data.forEach(async (server1, num) => {
+  (await decryptedserver.json()).forEach(async (server1, num) => {
     add(String(num + 1), server1.name);
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
