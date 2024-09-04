@@ -37,12 +37,12 @@ async function loadServers(){
   const serverjson = await server.json();
   const decryptedserver = await fetch("/decrypt", {
     method: "POST",
-    body: {
-     code: serverjson.hahaha
-    },
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json"
+    },
+    body: {
+     code: serverjson.hahaha
     }
   });
   const data = await decryptedserver.json();
