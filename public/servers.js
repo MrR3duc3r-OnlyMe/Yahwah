@@ -45,9 +45,10 @@ async function loadServers(){
      code: serverjson.hahaha
     })
   });
-  (await decryptedserver.json()).forEach(async (server1, num) => {
-    add(String(num + 1), server1.name);
-  });
+  const jsons = await decryptedserver.json();
+  for (const server of jsons){
+    add(String(num + 1), server.name);
+  }
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (() => {
     showResult(data[selectt1 - 1].name, data[selectt1 - 1].description, "info");
