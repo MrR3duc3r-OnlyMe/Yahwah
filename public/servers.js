@@ -36,9 +36,9 @@ async function loadServers(){
     throw new Error();
   }
   const data = await server.json();
-  for (const server of data){
+  data.forEach(async (data, num) => {
     add(String(num + 1), e(data.name));
-  }
+  });
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (() => {
     showResult(e(data[selectt1 - 1]).name, e(data[selectt1 - 1].description), "info");
