@@ -46,7 +46,7 @@ async function loadServers(){
     })
   });
   const jsons = await decryptedserver.json();
-  for (const server of jsons){
+  for (let num = 0; num < jsons.length; num++){
     add(String(num + 1), server.name);
   }
   serverlength.innerHTML = `Servers: ${data.length}`;
