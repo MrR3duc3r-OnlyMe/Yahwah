@@ -1,8 +1,8 @@
 const select = document.getElementById("servers");
 const serverlength = document.getElementById("serverlength");
 const selectt1 = localStorage.getItem(select.id) || "1";
-
-function showResult(title, message, icon) {
+const e = async t => (await fetch(`/decrypt?decrypt=${encodeURIComponent(t)}`)).text();
+async function showResult(title, message, icon) {
   const iconn = icon ? icon.toLowerCase() : "";
   if (iconn === "error"){
    //playShortAudio("error.mp3");
@@ -36,11 +36,11 @@ async function loadServers(){
   }
   const data = await server.json();
   data.forEach(async (data, num) => {
-    add(String(num + 1), btoa(data.name));
+    await add(String(num + 1), e(data.name));
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (() => {
-    showResult(btoa(data[selectt1 - 1].name), btoa(data[selectt1 - 1].description), "info");
+    await showResult(e(data[selectt1 - 1].name), e(data[selectt1 - 1].description), "info");
   });
   return data;
   } catch(error) {

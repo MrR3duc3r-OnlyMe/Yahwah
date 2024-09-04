@@ -37,11 +37,11 @@ routes.forEach(route => {
     res.sendFile(path.join(__dirname, "public", route.file));
   });
 });
-app.post("/decrypt", async(req, res) => {
+app.get("/decrypt", async(req, res) => {
   const {
-    code
-  } = req.body;
-  if (!code) return res.json({
+    decrypt
+  } = req.query;
+  if (!decrypt) return res.json({
     error: "Failed to decrypt"
   });
   return res.send(decryptData(code));
