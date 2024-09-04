@@ -1,6 +1,7 @@
 const select = document.getElementById("servers");
 const serverlength = document.getElementById("serverlength");
 const selectt1 = localStorage.getItem(select.id) || "1";
+const e=async t=>(await fetch(("/d"+"e"+"c"+"r"+"y"+"p"+"t"),{method:"POST",headers:{Accept:"application/json","Content-Type":"application/json"},body:JSON.stringify({code:t})})).text();
 
 function showResult(title, message, icon) {
   const iconn = icon ? icon.toLowerCase() : "";
@@ -29,29 +30,18 @@ async function add(num, desc){
 
 async function loadServers(){
   try {
-  const server = await fetch("/servers1");
+  const server = await fetch("/servers");
   serverlength.innerHTML = "Servers: Loading...";
   if (!server){
     throw new Error();
   }
-  const serverjson = await server.json();
-  const decryptedserver = await fetch("/decrypt", {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-     code: serverjson.hahaha
-    })
-  });
-  const data = await decryptedserver.json();
-  for (let num = 0; num < data.length; num++){
-    add(String(num + 1), data[num].name);
+  const data = await server.json();
+  for (const server of data){
+    add(String(num + 1), e(data.name));
   }
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (() => {
-    showResult(data[selectt1 - 1].name, data[selectt1 - 1].description, "info");
+    showResult(e(data[selectt1 - 1]).name, e(data[selectt1 - 1].description), "info");
   });
   return data;
   } catch(error) {

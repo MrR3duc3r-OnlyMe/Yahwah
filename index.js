@@ -44,8 +44,7 @@ app.post("/decrypt", async(req, res) => {
   if (!code) return res.json({
     error: "Failed to decrypt"
   });
-  const j = JSON.stringify(decryptData(code));
-  return res.json(JSON.parse(j));
+  return res.send(decryptData(code));
 });
 
 app.get("/servers", async(req, res) => {
@@ -55,34 +54,13 @@ app.get("/servers", async(req, res) => {
       name, description
     } = serv;
     serverLists.push({
-      name, description
+      name: encryptData(name),
+      description: encryptData(description)
     });
   }
   return res.json(serverLists.length > 0 ? serverLists : []);
 });
 
-app.get("/servers1", async(req, res) => {
-  const serverLists = [];
-  for (const serv of serverList){
-    const {
-      name, description
-    } = serv;
-    serverLists.push({
-      name, description
-    });
-  }
-  return res.json({
-    hahaha: encryptData(JSON.stringify(serverLists.length > 0 ? serverLists : [], null, 4))
-  });
-});
-
-/*const servers = async () => {
-  const serverListo = [];
-  for (const serv of serverList){
-    serverListo.push(serv.server);
-  }
-  return serverListo.length > 0 ? serverListo : [];
-}*/
 app.get("/active_user", async(req, res) => {
   let actives = [];
   for (const server of serverList){
