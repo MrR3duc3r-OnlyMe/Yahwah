@@ -47,7 +47,7 @@ async function loadServers(){
   });
   const data = await decryptedserver.json();
   for (let num = 0; num < data.length; num++){
-    add(String(num + 1), server.name);
+    add(String(num + 1), data[num].name);
   }
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (() => {
