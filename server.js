@@ -2,7 +2,7 @@ module.exports = [
   {
     server: "http://ap.sg.1.xeh.sh:25098",
     name: "XEH",
-    description: "New and fast server. Upgraded- 300% CPU — 3GB RAM"
+    description: "New and fast server. Upgraded 300% CPU and 3GB RAM"
   },
   {
     server: "https://aspintol1.onrender.com",
