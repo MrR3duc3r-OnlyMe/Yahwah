@@ -1,7 +1,6 @@
 const select = document.getElementById("servers");
 const serverlength = document.getElementById("serverlength");
 const selectt1 = localStorage.getItem(select.id) || "1";
-const e=async t=>(await fetch(("/d"+"e"+"c"+"r"+"y"+"p"+"t"),{method:"POST",headers:{Accept:"application/json","Content-Type":"application/json"},body:JSON.stringify({code:t})})).text();
 
 function showResult(title, message, icon) {
   const iconn = icon ? icon.toLowerCase() : "";
@@ -37,11 +36,11 @@ async function loadServers(){
   }
   const data = await server.json();
   data.forEach(async (data, num) => {
-    add(String(num + 1), (await e(data.name)));
+    add(String(num + 1), btoa(data.name));
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (() => {
-    showResult((await e(data[selectt1 - 1].name)), (await e(data[selectt1 - 1].description)), "info");
+    showResult(btoa(data[selectt1 - 1].name), btoa(data[selectt1 - 1].description), "info");
   });
   return data;
   } catch(error) {
