@@ -38,13 +38,13 @@ const jsonInput = document.getElementById('json-data');
 const prefix = document.getElementById('json-data1');
 const adminUid = document.getElementById('json-data2');
 const botName = document.getElementById('json-data3');
-const autoPost = document.getElementById("autopost");
+/*const autoPost = document.getElementById("autopost");
 
 [autoPost].forEach(ui => {
 ui.addEventListener('change', (event) => {
   localStorage.setItem(ui.id, event.currentTarget.checked.toString());
 });
-});
+});*/
 const button = document.getElementById('submitButton');
 const [
   listOfCommands,
@@ -91,9 +91,7 @@ async function State() {
           prefix: prefix.value === "" ? "/" : prefix.value,
           admin: adminUid.value,
           botname: botName.value,
-          autos: {
-            autopost: autoPost.checked || false
-          }
+          autos: {}
         }, null, 4);
   try {
     button.innerHTML = 'Please wait...';
@@ -177,14 +175,14 @@ async function commandList() {
         localStorage.setItem(name.id, name.value);
       });
     });
-    [autoPost].forEach(ui => {
+   /*[autoPost].forEach(ui => {
       //ui.checked = Boolean(localStorage.getItem(ui.id)) || false;
       ui.checked = false;
       ui.onclick = () => {
         showResult("Temporarily removed", "Will be fixed in the next update", "error");
         ui.checked = false;
       }
-    });
+    });*/
     button.onclick = State;
     const response = await fetch(`/commands?server=${selectt1}`);
     const {

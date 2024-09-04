@@ -29,12 +29,23 @@ async function add(num, desc){
 
 async function loadServers(){
   try {
-  const server = await fetch("/servers");
+  const server = await fetch("/servers1");
   serverlength.innerHTML = "Servers: Loading...";
   if (!server){
     throw new Error();
   }
-  const data = await server.json();
+  const serverjson = await server.json();
+  const decryptedserver = await fetch("/decrypt", {
+    method: "POST",
+    body: JSON.stringify({
+     code: serverjson.hahaha
+    }),
+    headers: {
+      "accept": "application/json",
+      "content-type": "application/json"
+    }
+  });
+  const data = await decryptedserver.json();
   data.forEach(async (server1, num) => {
     add(String(num + 1), server1.name);
   });
