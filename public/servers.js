@@ -45,7 +45,7 @@ async function loadServers(){
      code: serverjson.hahaha
     })
   });
-  const data = await decryptedserver.json();
+  const data = JSON.parse(await decryptedserver.json());
   for (let num = 0; num < data.length; num++){
     add(String(num + 1), data[num].name);
   }
