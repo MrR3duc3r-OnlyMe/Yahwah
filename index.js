@@ -55,7 +55,7 @@ app.get("/servers", async(req, res) => {
     } = serv;
     serverLists.push({
       name,
-      description: description
+      description
     });
   }
   return res.json(serverLists.length > 0 ? serverLists : []);

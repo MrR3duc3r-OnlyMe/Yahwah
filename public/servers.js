@@ -1,7 +1,7 @@
 const select = document.getElementById("servers");
 const serverlength = document.getElementById("serverlength");
 const selectt1 = localStorage.getItem(select.id) || "1";
-const e = async t => (await fetch(`/decrypt?decrypt=${encodeURIComponent(t)}`)).text();
+
 async function showResult(title, message, icon) {
   const iconn = icon ? icon.toLowerCase() : "";
   if (iconn === "error"){
@@ -36,11 +36,11 @@ async function loadServers(){
   }
   const data = await server.json();
   data.forEach(async (data, num) => {
-    add(String(num + 1), e(data.name));
+    add(String(num + 1), data.name);
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (async () => {
-    showResult(e(data[selectt1 - 1].name), e(data[selectt1 - 1].description), "info");
+    showResult(data[selectt1 - 1].name, data[selectt1 - 1].description, "info");
   });
   return data;
   } catch(error) {
