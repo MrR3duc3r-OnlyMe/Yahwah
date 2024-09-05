@@ -36,11 +36,11 @@ async function loadServers(){
   }
   const data = await server.json();
   data.forEach(async (data, num) => {
-    await add(String(num + 1), await e(data.name));
+    add(String(num + 1), e(data.name));
   });
   serverlength.innerHTML = `Servers: ${data.length}`;
   serverlength.onclick = (async () => {
-    await showResult(await e(data[selectt1 - 1].name), await e(data[selectt1 - 1].description), "info");
+    showResult(e(data[selectt1 - 1].name), e(data[selectt1 - 1].description), "info");
   });
   return data;
   } catch(error) {
