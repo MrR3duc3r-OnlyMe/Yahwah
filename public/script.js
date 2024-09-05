@@ -20,7 +20,8 @@ function playMusic(url, isalang, isLoop) {
     onend: () => {}
   });
   if (isalang) {
-    sound.play();
+    playShortAudio("intro.mp3")
+    setTimeout(() => sound.play(), 3*1100);
   }
 }
 
