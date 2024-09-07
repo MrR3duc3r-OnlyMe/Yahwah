@@ -15,11 +15,6 @@ module.exports = [
     description: "New server. same as Main."
   },
   {
-    server: "http://fred.hidencloud.com:26076",
-    name: "Hidencloud",
-    description: "New server."
-  },
-  {
     server: "https://botidebug.onrender.com",
     name: "Debug Server",
     description: "Can access experimental features, beta testing, Use at your own risk, you might suspend your account due to multiple restart on testing"
