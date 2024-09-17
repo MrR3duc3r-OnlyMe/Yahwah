@@ -30,6 +30,10 @@ const routes = [
   {
     path: "/config",
     file: "config.html"
+  },
+  {
+    path: "/uid",
+    file: "uid.html"
   }
 ];
 routes.forEach(route => {

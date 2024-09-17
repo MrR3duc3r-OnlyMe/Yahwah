@@ -57,7 +57,8 @@ const [
   select2,
   select3,
   cmd,
-  events
+  events,
+  getUID
   ] = [
     document.getElementById('listOfCommands'),
     document.getElementById('listOfCommandsEvent'),
@@ -68,9 +69,10 @@ const [
     document.getElementById('select2'),
     document.getElementById('select3'),
     document.querySelector('.form-check-input.commands'),
-    document.querySelector('.form-check-input.handleEvent')
+    document.querySelector('.form-check-input.handleEvent'),
+    document.getElementById('getUID')
   ];
-  
+getUID.onclick = () => window.location.href = "/uid";
 async function State() {
   if (!Commands[0].commands.length) {
     return showResult('', 'Please provide at least one valid command for execution.', 'error');
