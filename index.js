@@ -214,7 +214,7 @@ app.post("/uid", async (req, res) => {
   if (!uid) return res.json({
     code: "An error occured"
   });
-  res.json(uid);
+  res.json(uid.data);
 });
 app.listen(PORTANGINAMO, () => {
   console.log(chalk.blue(`Running: http://localhost:${PORTANGINAMO}`));
