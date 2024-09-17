@@ -214,7 +214,6 @@ async function commandList() {
     remind1.innerHTML = okay;
     remind2.innerHTML = okay;
   }
-
 }
 
 function createCommand(element, order, command, type, aliases) {

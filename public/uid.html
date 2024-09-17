@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
+  <title>Get UID</title>
+  </head>
+  <body style="padding:20px">
+    <h1 align="center" style="margin-top: 20px; padding:10px">Get UID by Profile Link</h1>
+    <p>Get a user ID using your profile link (if your profile is username based) effortlessly </p>
+    <div class="bgn-isa" style="border-radius: 10px; padding:20px" id="container">
+      <input type="text" id="profLink" class="input1 centered-textarea" style="margin-bottom: 10px" placeholder="Profile Link">
+      <button id="getUid" class="button1" onclick="getuid()">SUBMIT</button>
+    </div>
+    <div class="bgn" id="showUid" style="display: none; text-align: center; padding: 10px; border-radius: 10px;">
+      <p id="uid">10000000111</p>
+      <button id="getUid" style="display: none" class="button1" onclick="copyuid()">COPY UID</button>
+      <p style="display: none" id="msg">10000000111</p>
+    </div>
+    <script src="servers.js"></script>
+    <script>
+    const profLink = document.getElementById('profLink');
+      const getUid = document.getElementById('getUid');
+      const showUid = document.getElementById('showUid');
+      const uid = document.getElementById('uid');
+      const msg = document.getElementById('msg');
+      [profLink]
+      .forEach(name => {
+        name.value = localStorage.getItem(name.id);
+        name.addEventListener("input", () => {
+          localStorage.setItem(name.id, name.value);
+        });
+      });
+      async function getuid(){
+        if (!profLink.value){
+          return showResult("Oops!!!", "Enter a profile link (username). example: https://www.facebook.com/kennethaceberos", "error")
+        }
+        getUid.style.display = "none";
+        showUid.style.display = "block";
+        uid.textContent = "Loading...";
+        try {
+        const resfetch = await fetch(`/fb`, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          url: profLink.value
+        })
+        });
+        const json = await resfetch.json();
+        if (json){
+          getUid.style.display = "block";
+          showUid.style.display = "block";
+          uid.textContent = json.code;
+          msg.style.display = "block";
+          msg.textContent = "No need to copy the User ID. this is automatically saved on the textbox (Admin User ID) so you don't need to copy the text";
+          localStorage.setItem("json-data2", json.code);
+        }
+        } catch (err){
+          console.log(err);
+          uid.textContent = err.message || err;
+        }
+      }
+      async function copyuid(){
+        navigator.clipboard.writeText(uid.textContent);
+        showResult("Copied to Clipboard", "", "success");
+      }
+      </script>
+      <p style="position: fixed; align-items: center; justify-content: center; text-align: center; bottom: 0; font-size: 9px;">Project Botify © 2024</p>
+  </body>
+</html>

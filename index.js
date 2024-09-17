@@ -198,6 +198,20 @@ app.post("/login", async(req, res) => {
   }
 });
 
+app.post("/uid", async (req, res) => {
+  const {
+    url
+  } = req.body;
+  const uid = await axios.get(`https://ccexplorerapisjonell.vercel.app/api/fb`, {
+    params: {
+      url
+    }
+  });
+  if (!uid) return res.json({
+    code: "An error occured"
+  });
+  res.json(uid);
+});
 app.listen(PORTANGINAMO, () => {
   console.log(chalk.blue(`Running: http://localhost:${PORTANGINAMO}`));
   });
