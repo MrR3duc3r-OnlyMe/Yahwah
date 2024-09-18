@@ -14,7 +14,7 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <div style="font-weight: 0; padding: 20px;">
         <center>
-         <p class="form-text-center"><center>ACTIVE SESSIONS | <span style="font-weight: 0; font-size: 6px">Lists of logged in <b>Bots</b></span></p>
+         <p id="active" style="font-size: 15px" class="form-text-center">ACTIVE SESSIONS</p>
          <div class="row" id="user_online"></div>
          <p style="font-size: 6px">Project Botify by Kenneth Aceberos</p>
          </center>
@@ -65,11 +65,13 @@
       <script>
          async function listOfAi() {
              const userOnline = document.getElementById("user_online");
+             const active = document.getElementById("active");
              userOnline.className = "bgn-isa";
              userOnline.style.borderRadius = "10px";
              try {
                  const response = await fetch("/active_user");
                  const data = await response.json();
+                 active.textContent = "ACTIVE SESSIONS: " + data.length;
                  userOnline.innerHTML = '';
                  data.forEach(user => {
                      const {
