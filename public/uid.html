@@ -43,7 +43,7 @@
           return showResult("Oops!!!", "Enter a profile link (username). example: https://www.facebook.com/kennethaceberos", "error")
         }
         getUid.style.display = "none";
-        showUid.style.display = "block";
+        showUid.style.display = "none";
         uid.textContent = "Loading...";
         try {
         const resfetch = await fetch(`/fb`, {
