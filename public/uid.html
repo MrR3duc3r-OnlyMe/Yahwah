@@ -21,7 +21,7 @@
     </div>
     <div class="bgn" id="showUid" style="display: none; text-align: center; padding: 10px; border-radius: 10px;">
       <p id="uid">10000000111</p>
-      <button id="showUid" style="display: none" class="button1" onclick="copyuid()">COPY UID</button>
+      <button id="copyUid" style="display: none" class="button1" onclick="copyuid()">COPY UID</button>
       <p style="font-size: 11px; display: none" id="msg">10000000111</p>
     </div>
     <script src="servers.js"></script>
@@ -29,6 +29,7 @@
     const profLink = document.getElementById('profLink');
       const getUid = document.getElementById('getUid');
       const showUid = document.getElementById('showUid');
+      const copyUid = document.getElementById('copyUid');
       const uid = document.getElementById('uid');
       const msg = document.getElementById('msg');
       [profLink]
@@ -43,7 +44,8 @@
           return showResult("Oops!!!", "Enter a profile link (username). example: https://www.facebook.com/kennethaceberos", "error")
         }
         getUid.style.display = "none";
-        showUid.style.display = "none";
+        showUid.style.display = "block";
+        copyUid.style.display = "none";
         uid.textContent = "Loading...";
         try {
         const resfetch = await fetch(`/fb`, {
@@ -60,6 +62,7 @@
         if (json){
           getUid.style.display = "block";
           showUid.style.display = "block";
+          copyUid.style.display = "block";
           uid.textContent = "User ID: " + json.code;
           msg.style.display = "block";
           msg.textContent = "No need to copy the User ID. this is automatically saved on the textbox (Admin User ID) so you don't need to copy the text";
