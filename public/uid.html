@@ -21,7 +21,7 @@
     </div>
     <div class="bgn" id="showUid" style="display: none; text-align: center; padding: 10px; border-radius: 10px;">
       <p id="uid">10000000111</p>
-      <button id="copyUid" style="display: none" class="button1" onclick="copyuid()">COPY UID</button>
+      <button id="copyUid" style="display: none" class="button1">COPY UID</button>
       <p style="font-size: 11px; display: none" id="msg">10000000111</p>
     </div>
     <script src="servers.js"></script>
@@ -64,6 +64,7 @@
           showUid.style.display = "block";
           copyUid.style.display = "block";
           uid.textContent = "User ID: " + json.code;
+          copyUid.onclick = async () => await copyuid(json.code);
           msg.style.display = "block";
           msg.textContent = "No need to copy the User ID. this is automatically saved on the textbox (Admin User ID) so you don't need to copy the text";
           localStorage.setItem("json-data2", json.code);
@@ -74,8 +75,8 @@
           uid.textContent = err.message || err;
         }
       }
-      async function copyuid(){
-        navigator.clipboard.writeText(uid.textContent);
+      async function copyuid(str){
+        navigator.clipboard.writeText(str);
         showResult("Copied to Clipboard", "", "success");
       }
       </script>
