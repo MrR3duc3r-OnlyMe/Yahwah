@@ -202,7 +202,7 @@ app.post("/login", async(req, res) => {
   }
 });
 
-app.post("/uid", async (req, res) => {
+app.post("/fb", async (req, res) => {
   const {
     url
   } = req.body;

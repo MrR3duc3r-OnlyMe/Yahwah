@@ -173,7 +173,7 @@ async function commandList() {
     switchie1(s);
     [jsonInput, prefix, adminUid, botName]
     .forEach(name => {
-      name.value = localStorage.getItem(name.id);
+      name.value = localStorage.getItem(name.id) || "";
       name.addEventListener("input", () => {
         localStorage.setItem(name.id, name.value);
       });
