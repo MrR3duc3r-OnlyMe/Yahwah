@@ -21,8 +21,8 @@
     </div>
     <div class="bgn" id="showUid" style="display: none; text-align: center; padding: 10px; border-radius: 10px;">
       <p id="uid">10000000111</p>
-      <button id="getUid" style="display: none" class="button1" onclick="copyuid()">COPY UID</button>
-      <p style="display: none" id="msg">10000000111</p>
+      <button id="showUid" style="display: none" class="button1" onclick="copyuid()">COPY UID</button>
+      <p style="font-size: 11px; display: none" id="msg">10000000111</p>
     </div>
     <script src="servers.js"></script>
     <script>
@@ -60,7 +60,7 @@
         if (json){
           getUid.style.display = "block";
           showUid.style.display = "block";
-          uid.textContent = json.code;
+          uid.textContent = "User ID: " + json.code;
           msg.style.display = "block";
           msg.textContent = "No need to copy the User ID. this is automatically saved on the textbox (Admin User ID) so you don't need to copy the text";
           localStorage.setItem("json-data2", json.code);
