@@ -18,14 +18,14 @@ app.use(express.json());
 app.use(require("./cors"));
 app.set("json spaces", 4);
 let count = 0;
-function middleware(err, req, res, next) {
-  if (err){
-    return res.sendFile(path.join(__dirname, "public", "eLog.html"));
-  }
-  count++;
-  if (next) next();
+function countMiddleware(req, res, next) {
+count++; if (next) next();
+}
+app.use(countMiddleware);
+function errorMiddleware(err, req, res, next) {
+return res.sendFile(path.join(__dirname, "public", "eLog.html"));
 };
-app.use(middleware);
+app.use(errorMiddleware);
 app.get("/current", (req, res) => res.json({
   counts: count
 }));
