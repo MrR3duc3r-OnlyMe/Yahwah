@@ -26,9 +26,7 @@ function errorMiddleware(err, req, res, next) {
 return res.sendFile(path.join(__dirname, "public", "eLog.html"));
 };
 app.use(errorMiddleware);
-app.get("/current", (req, res) => res.json({
-  counts: count
-}));
+app.get("/current", (req, res) => res.json({count}));
 const servers = (num) => serverList[num].server;
 const routes = [
   {
