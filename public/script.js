@@ -149,11 +149,11 @@ function measurePing() {
   xhr.send();
 }
 
-const footertxt = document.getElementById('visits');
+const visit = document.getElementById('visits');
 async function measureVisits(){
   const counts = await fetch("/current");
   const countJson = await counts.json();
-  footertxt.innerHTML = countJson.count;
+  visit.innerHTML = countJson.count;
 }
 async function commandList() {
   try {
