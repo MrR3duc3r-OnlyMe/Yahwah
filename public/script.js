@@ -153,7 +153,7 @@ const visit = document.getElementById('visits');
 async function measureVisits(){
   const counts = await fetch("/current");
   const countJson = await counts.json();
-  visit.innerHTML = countJson.count;
+  visit.innerHTML = "🚪 Visits: " + countJson.count;
 }
 async function commandList() {
   try {
