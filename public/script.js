@@ -148,10 +148,16 @@ function measurePing() {
   startTime = Date.now();
   xhr.send();
 }
+
+const footertxt = document.getElementById('visits');
+async function measureVisits(){
+  footertxt.innerHTML = ((await fetch('/current')).json()).count;
+}
 async function commandList() {
   try {
     //footertxt.innerHTML = "© 2024 Project Botify";
     setInterval(() => footertxt.innerHTML = `🕑 ${new Date().toLocaleString()}`, 1000);
+    measureVisits();
     document.getElementById("test1").innerHTML = `Create your own bot!<br>(100% FREE and <font color="red">NOT FOR SALE</font>)`;
     let file = "NethBgmusic";
     let getm = localStorage.getItem(file);
