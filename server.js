@@ -18,5 +18,10 @@ module.exports = [
     server: "https://botidebug.onrender.com",
     name: "Render 3",
     description: ""
+  },
+  {
+    server: "https://qirkfa0.onrender.com",
+    name: "test server",
+    description: ""
   }
 ];

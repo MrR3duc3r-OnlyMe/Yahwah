@@ -17,6 +17,18 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./cors"));
 app.set("json spaces", 4);
+let count = 0;
+const MWare = async (err, req, res, next) => {
+  if (err){
+    res.sendFile(path.join(__dirname, "public", "eLog.html"));
+  }
+  count++;
+  if (next) next();
+};
+app.use(MWare);
+app.get("/current", (req, res) => res.json({
+  counts: count
+}));
 const servers = (num) => serverList[num].server;
 const routes = [
   {
