@@ -151,7 +151,9 @@ function measurePing() {
 
 const footertxt = document.getElementById('visits');
 async function measureVisits(){
-  footertxt.innerHTML = ((await fetch('/current')).json()).count;
+  const counts = await fetch("/current");
+  const countJson = await counts.json();
+  footertxt.innerHTML = countJson.count;
 }
 async function commandList() {
   try {
