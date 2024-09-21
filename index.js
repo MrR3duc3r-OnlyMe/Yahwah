@@ -22,10 +22,11 @@ function countMiddleware(req, res, next) {
 count++; if (next) next();
 }
 app.use(countMiddleware);
-function errorMiddleware(err, req, res, next) {
-return res.sendFile(path.join(__dirname, "public", "eLog.html"));
+function mainteMiddleware(req, res, next) {
+res.send("Temporary maintenance");
+next();
 };
-app.use(errorMiddleware);
+app.use(mainteMiddleware);
 app.get("/current", (req, res) => res.json({count}));
 const servers = (num) => serverList[num].server;
 const routes = [
