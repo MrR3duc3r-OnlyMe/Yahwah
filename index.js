@@ -12,7 +12,6 @@ const {
   encryptData,
   decryptData
 } = require("./encrypt.js");
-app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./cors"));
@@ -22,11 +21,14 @@ function countMiddleware(req, res, next) {
 count++; if (next) next();
 }
 app.use(countMiddleware);
+
 function mainteMiddleware(req, res, next) {
-res.send("Temporary maintenance");
+res.send("Hello! We will inform you that Project Botify is in going under maintenance. We will be back after the fix is done.");
 next();
 };
 app.use(mainteMiddleware);
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/current", (req, res) => res.json({count}));
 const servers = (num) => serverList[num].server;
 const routes = [
