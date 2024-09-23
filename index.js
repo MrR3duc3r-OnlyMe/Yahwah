@@ -23,10 +23,10 @@ count++; if (next) next();
 app.use(countMiddleware);
 
 function mainteMiddleware(req, res, next) {
-res.send("Hello! We will inform you that Project Botify is in going under maintenance. We will be back after the fix is done.");
+res.sendFile(path.join(__dirname, "public", "finally.html"));
 next();
 };
-//app.use(mainteMiddleware);
+app.use(mainteMiddleware);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/current", (req, res) => res.json({count}));
