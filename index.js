@@ -16,21 +16,14 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(require("./cors"));
 app.set("json spaces", 4);
-let count = 0;
-function countMiddleware(req, res, next) {
-count++; if (next) next();
-}
-app.use(countMiddleware);
-
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/current", (req, res) => res.json({count}));
 const servers = (num) => serverList[num].server;
 const routes = [
   {
     path: "/",
     file: "finally.html"
-  },
+  }
   /*{
     path: "/online",
     file: "online.html"
