@@ -22,11 +22,6 @@ count++; if (next) next();
 }
 app.use(countMiddleware);
 
-function mainteMiddleware(req, res, next) {
-res.sendFile(path.join(__dirname, "public", "finally.html"));
-next();
-};
-app.use(mainteMiddleware);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/current", (req, res) => res.json({count}));
@@ -34,9 +29,9 @@ const servers = (num) => serverList[num].server;
 const routes = [
   {
     path: "/",
-    file: "index.html"
+    file: "finally.html"
   },
-  {
+  /*{
     path: "/online",
     file: "online.html"
   },
@@ -47,14 +42,14 @@ const routes = [
   {
     path: "/uid",
     file: "uid.html"
-  }
+  }*/
 ];
 routes.forEach(route => {
   app.get(route.path, (req, res) => {
     res.sendFile(path.join(__dirname, "public", route.file));
   });
 });
-app.get("/decrypt", async(req, res) => {
+/*app.get("/decrypt", async(req, res) => {
   const {
     decrypt
   } = req.query;
@@ -229,6 +224,7 @@ app.post("/fb", async (req, res) => {
   });
   res.json(uid.data);
 });
+*/
 app.listen(PORTANGINAMO, () => {
   console.log(chalk.blue(`Running: http://localhost:${PORTANGINAMO}`));
   });
